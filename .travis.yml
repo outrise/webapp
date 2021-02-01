@@ -9,7 +9,7 @@ services:
 
 before_install:
   - docker build -t tamilan/webapp1 .
-  - docker run -d -p 80:80 tamilan/webapp1"
+  - docker run -d -p 80:80 tamilan/webapp1
   - docker ps -a
 #  - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
 
