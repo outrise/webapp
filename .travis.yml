@@ -15,9 +15,9 @@ before_install:
 
 notifications: true
 
-deploy:
-  provider: script
-  script: bash docker_push
-  on:
-    branch: master
+# deploy:
+#   provider: script
+#   script: bash docker_push
+#   on:
+#     branch: master
 
