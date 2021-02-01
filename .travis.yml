@@ -1,8 +1,8 @@
 os: linux
 language: php
 
-stages:
-  - name: unit tests
+#stages:
+#  - name: unit tests
 
 services:
   - docker
