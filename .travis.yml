@@ -11,14 +11,14 @@ services:
   - podman
 
 before_install:
-- podman build --no-cache -t outrise/webapp .
+- podman build --no-cache -t outrise/webapp:${TRAVIS_COMMIT} .
 # - docker run ${TRAVIS_REPO_SLUG}:${TRAVIS_COMMIT} /go/src/github.com/kainlite/whatismyip-go/whatismyip-go.test
-- podman run -d -p 127.0.0.1:80:80 outrise/webapp
+- podman run -d -p 127.0.0.1:80:80 outrise/webapp:${TRAVIS_COMMIT}
 - podman ps -a
 script:
   - curl 127.0.0.1:80
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - podman push outrise/webapp
+  - podman push outrise/webapp:${TRAVIS_COMMIT}
 
 notifications: true
 
