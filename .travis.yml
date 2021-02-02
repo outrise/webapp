@@ -9,17 +9,16 @@ language: php
   
 services:
   - podman
-  - docker
 
 before_install:
-- docker build --no-cache -t outrise/webapp .
+- podman build --no-cache -t outrise/webapp .
 # - docker run ${TRAVIS_REPO_SLUG}:${TRAVIS_COMMIT} /go/src/github.com/kainlite/whatismyip-go/whatismyip-go.test
-- docker run -d -p 127.0.0.1:80:80 outrise/webapp
-- docker ps -a
+- podman run -d -p 127.0.0.1:80:80 outrise/webapp
+- podman ps -a
 script:
   - curl 127.0.0.1:80
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push outrise/webapp
+  - podman push outrise/webapp
 
 notifications: true
 
