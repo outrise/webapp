@@ -22,6 +22,10 @@ script:
 
 notifications: true
 
+deploy:
+  provider: pages:git
+  token: $GITHUB_P_TOKEN
+  edge: true
 # deploy:
 #   provider: script
 #   script: bash docker_push
